@@ -21,7 +21,7 @@ class Bird:
         self.state.draw()
 
 PIXEL_PER_METER = (10.0 / 0.2)  # 10 pixel == 20cm
-FLY_SPEED_KMPH = 45.0           # 새의 실제 평균 속도
+FLY_SPEED_KMPH = 15.0           # 새의 실제 평균 속도
 FLY_SPEED_MPM = (FLY_SPEED_KMPH * 1000.0 / 60.0)
 FLY_SPEED_MPS = (FLY_SPEED_MPM / 60.0)
 FLY_SPEED_PPS = (FLY_SPEED_MPS * PIXEL_PER_METER)
@@ -52,7 +52,8 @@ class Fly:
 
     def draw(self):
         if self.bird.dir == 1:
-            self.bird.image.clip_draw(int(self.bird.frame) * 1, 1, 1, 1, self.bird.x, self.bird.y, self.bird.size, self.bird.size)
+            self.bird.image.clip_draw(int(self.bird.frame) * 183, 168, 183, 168,
+                                      self.bird.x, self.bird.y, self.bird.size, self.bird.size)
         else:
-            self.bird.image.clip_composite_draw(int(self.bird.frame) * 1, 1, 1, 1, 1, 'h', self.bird.x, self.bird.y, self.bird.size, self.bird.size)
-
+            self.bird.image.clip_composite_draw(int(self.bird.frame) * 183, 168, 183, 168,
+                                                0, 'h', self.bird.x, self.bird.y, self.bird.size, self.bird.size)
