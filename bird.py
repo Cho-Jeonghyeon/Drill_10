@@ -20,6 +20,15 @@ class Bird:
     def draw(self):
         self.state.draw()
 
+PIXEL_PER_METER = (10.0 / 0.2)  # 10 pixel == 20cm
+FLY_SPEED_KMPH = 45.0           # 새의 실제 평균 속도
+FLY_SPEED_MPM = (FLY_SPEED_KMPH * 1000.0 / 60.0)
+FLY_SPEED_MPS = (FLY_SPEED_MPM / 60.0)
+FLY_SPEED_PPS = (FLY_SPEED_MPS * PIXEL_PER_METER)
+
+TIME_PER_ACTION = 0.3               # 날개짓 1사이클 0.3초
+ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+FRAMES_PER_ACTION = 14
 
 class Fly:
     def __init__(self, bird):
