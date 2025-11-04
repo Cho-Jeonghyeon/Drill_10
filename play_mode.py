@@ -29,8 +29,8 @@ def init():
     grass = Grass()
     game_world.add_object(grass, 0)
 
-    #boy = Boy()
-   # game_world.add_object(boy, 1)
+    boy = Boy()
+    game_world.add_object(boy, 1)
 
     birds = [
         Bird(x=200, y=450),

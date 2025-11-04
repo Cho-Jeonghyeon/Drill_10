@@ -7,7 +7,7 @@ class Bird:
         self.x, self.y = x, y
         self.size = size
         self.dir = dir
-        self.speed = 10#일단 상수
+        self.speed = FLY_SPEED_PPS
         self.frame = 0
 
         self.fly = Fly(self)
@@ -21,7 +21,7 @@ class Bird:
         self.state.draw()
 
 PIXEL_PER_METER = (10.0 / 0.2)  # 10 pixel == 20cm
-FLY_SPEED_KMPH = 15.0           # 새의 실제 평균 속도
+FLY_SPEED_KMPH = 45.0           # 새의 실제 평균 속도
 FLY_SPEED_MPM = (FLY_SPEED_KMPH * 1000.0 / 60.0)
 FLY_SPEED_MPS = (FLY_SPEED_MPM / 60.0)
 FLY_SPEED_PPS = (FLY_SPEED_MPS * PIXEL_PER_METER)
@@ -41,11 +41,11 @@ class Fly:
         pass
 
     def do(self):
-        self.bird.frame = (self.bird.frame + 1) % 3
+        self.bird.frame = (self.bird.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
 
-        self.bird.x += self.bird.dir * self.bird.speed
+        self.bird.x += self.bird.dir * self.bird.speed  * game_framework.frame_time
 
-        if self.bird.x > 800 - self.bird.size // 2:
+        if self.bird.x > 1600 - self.bird.size // 2:
             self.bird.dir = -1
         elif self.bird.x < self.bird.size // 2:
             self.bird.dir = 1
