@@ -42,5 +42,8 @@ class Fly:
             self.bird.dir = 1
 
     def draw(self):
-        pass
+        if self.bird.dir == 1:
+            self.bird.image.clip_draw(int(self.bird.frame) * 1, 1, 1, 1, self.bird.x, self.bird.y, self.bird.size, self.bird.size)
+        else:
+            self.bird.image.clip_composite_draw(int(self.bird.frame) * 1, 1, 1, 1, 1, 'h', self.bird.x, self.bird.y, self.bird.size, self.bird.size)
 
