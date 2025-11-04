@@ -5,7 +5,7 @@ from grass import Grass
 import game_world
 
 import game_framework
-
+from bird import Bird
 
 boy = None
 
@@ -31,6 +31,20 @@ def init():
 
     boy = Boy()
     game_world.add_object(boy, 1)
+
+    birds = [
+        Bird(x=200, y=450),
+        Bird(x=400, y=400),
+        Bird(x=600, y=500, dir=-1),
+        Bird(x=800, y=350),
+        Bird(x=1000, y=450, dir=-1),
+        Bird(x=1200, y=400),
+        Bird(x=1400, y=480, dir=-1),
+        Bird(x=300, y=520),
+        Bird(x=900, y=370),
+        Bird(x=1100, y=530)
+    ]
+    game_world.add_objects(birds, 1)
 
 def update():
     game_world.update()
