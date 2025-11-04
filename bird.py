@@ -23,7 +23,7 @@ class Bird:
 
 class Fly:
     def __init__(self, bird):
-
+        self.bird = bird
 
     def enter(self):
         pass
@@ -32,7 +32,14 @@ class Fly:
         pass
 
     def do(self):
-        pass
+        self.bird.frame = (self.bird.frame + 1) % 3
+
+        self.bird.x += self.bird.dir * self.bird.speed
+
+        if self.bird.x > 800 - self.bird.size // 2:
+            self.bird.dir = -1
+        elif self.bird.x < self.bird.size // 2:
+            self.bird.dir = 1
 
     def draw(self):
         pass
