@@ -2,11 +2,11 @@ from pico2d import *
 import game_framework
 
 class Bird:
-    def __init__(self):
+    def __init__(self, x=400, y=400, size=100, dir=1):
         self.image = load_image('bird_animation.png')
-        self.x, self.y = 400, 400
-        self.size = 100
-        self.dir = 1
+        self.x, self.y = x, y
+        self.size = size
+        self.dir = dir
         self.speed = 10#일단 상수
         self.frame = 0
 
